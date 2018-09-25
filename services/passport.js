@@ -45,28 +45,28 @@ passport.use(
 );
 
 
-passport.use(
-  new FacebookStrategy(
-    {
-      clientID: keys.facebookClientID,
-      clientSecret: keys.facebookClientSecret,
-      callbackURL: "/auth/facebook/callback"
-    },
-    (accessToken, refreshToken, profile, done) => {
-      const profileId = profile ? profile.id.toString() : false;
-      const profileName = profile ? profile.displayName : "user" + profileId;
-      if (profileId) {
-        User.findOne({ facebookId: profileId }).then((existingUser, err) => {
-          console.log("existingUser", existingUser);
-          if (!existingUser) {
-            new User({ facebookId: profileId, name: profileName })
-              .save()
-              .then(user => done(null, user));
-          } else {
-            done(null, existingUser);
-          }
-        });
-      }
-    }
-  )
-);
+// passport.use(
+//   new FacebookStrategy(
+//     {
+//       clientID: keys.facebookClientID,
+//       clientSecret: keys.facebookClientSecret,
+//       callbackURL: "/auth/facebook/callback"
+//     },
+//     (accessToken, refreshToken, profile, done) => {
+//       const profileId = profile ? profile.id.toString() : false;
+//       const profileName = profile ? profile.displayName : "user" + profileId;
+//       if (profileId) {
+//         User.findOne({ facebookId: profileId }).then((existingUser, err) => {
+//           console.log("existingUser", existingUser);
+//           if (!existingUser) {
+//             new User({ facebookId: profileId, name: profileName })
+//               .save()
+//               .then(user => done(null, user));
+//           } else {
+//             done(null, existingUser);
+//           }
+//         });
+//       }
+//     }
+//   )
+// );
