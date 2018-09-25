@@ -50,7 +50,7 @@ passport.use(
     {
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/facebook/callback"
     },
     (accessToken, refreshToken, profile, done) => {
       const profileId = profile ? profile.id.toString() : false;
