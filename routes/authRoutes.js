@@ -10,12 +10,12 @@ module.exports = app => {
   );
 
 
-    app.get(
-      "/auth/facebook",
-      passport.authenticate("facebook", {
-        scope: ["user_friends", "email"]
-      })
-    );
+    // app.get(
+    //   "/auth/facebook",
+    //   passport.authenticate("facebook", {
+    //     scope: ["user_friends", "email"]
+    //   })
+    // );
 
   app.get("/auth/google/callback", passport.authenticate("google"));
 
