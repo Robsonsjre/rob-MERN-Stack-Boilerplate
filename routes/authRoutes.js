@@ -17,18 +17,20 @@ module.exports = app => {
     //   })
     // );
 
-  app.get("/auth/google/callback", passport.authenticate("google"));
+  app.get("/auth/google/callback",
+  passport.authenticate("google"),
+  (req, res) => {
+    res.redirect('/surveys')
+  }
+);
 
-  app.get("/", (req, res) => {
-    console.log(req);
-    res.send({ hi: "thereeee" });
-  });
-
-  app.get("/teste", (req, res) => {
+  app.get("/api/teste", (req, res) => {
     res.send(req.user);
   });
 
-  app.get("/logout", (req, res) => {
+  app.get("/api/logout", (req, res) => {
+    console.log('ooopa')
     req.logout();
+    res.redirect('/');
   });
 }
