@@ -28,6 +28,7 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
+    "path": "^0.12.7",
     "react-router-dom": "^4.3.1",
     "react-stripe-checkout": "^2.6.3",
     "redux-thunk": "^2.3.0",
