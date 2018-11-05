@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import * as actions from '../actions'
 
 class Dashboard extends React.Component {
   constructor() {
@@ -12,6 +14,7 @@ class Dashboard extends React.Component {
 
   handleInput(a, b) {
     this.setState({name: a.target.value})
+    this.props.handleInput('name', this.state.name)
   }
 
   render() {
@@ -19,9 +22,9 @@ class Dashboard extends React.Component {
       <div>
         Dashboard
         <input label='Name' type='text' onChange={this.handleInput} value={this.state.name}></input>
-        <div class="fixed-action-btn">
-          <Link to='/surveys/new' class="btn-floating btn-large red">
-            <i class="large material-icons">add</i>
+        <div className="fixed-action-btn">
+          <Link to='/surveys/new' className="btn-floating btn-large red">
+            <i className="large material-icons">add</i>
           </Link>
         </div>
         <h3>{this.state.name}</h3>
@@ -30,4 +33,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default connect(null, actions)(Dashboard);
