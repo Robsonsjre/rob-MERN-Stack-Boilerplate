@@ -12,6 +12,29 @@ class Dashboard extends React.Component {
     this.handleInput = this.handleInput.bind(this)
   }
 
+  componentDidMount() {
+    this.props.fetchSurveys()
+  }
+
+  renderList() {
+    if (!this.props.surveys) return
+    return this.props.surveys.reverse().map(survey => {
+      return (
+        <div className="card darken-1" key={Math.random()}>
+          <div className="card-content">
+            <span className="card-title">{survey.title}</span>
+            <p>{survey.body}</p>
+            <p className="right">LastUpdate: {survey.lastResponded}</p>
+            <div className="card-action">
+              <a>YES:  {survey.yes}</a>
+              <a>YES:  {survey.no}</a>
+            </div>
+          </div>
+        </div>
+      )
+    })
+  }
+
   handleInput(a, b) {
     this.setState({name: a.target.value})
     this.props.handleInput('name', this.state.name)
@@ -21,6 +44,7 @@ class Dashboard extends React.Component {
     return (
       <div>
         Dashboard
+        {this.renderList()}
         <input label='Name' type='text' onChange={this.handleInput} value={this.state.name}></input>
         <div className="fixed-action-btn">
           <Link to='/surveys/new' className="btn-floating btn-large red">
@@ -33,4 +57,11 @@ class Dashboard extends React.Component {
   }
 }
 
-export default connect(null, actions)(Dashboard);
+function mapStateToProps(state) {
+  console.log('statesssssssssssss', state)
+  return {
+    surveys: state.surveys
+  }
+}
+
+export default connect(mapStateToProps, actions)(Dashboard);
