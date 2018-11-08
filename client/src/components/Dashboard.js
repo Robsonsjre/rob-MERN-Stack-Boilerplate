@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
           <div className="card-content">
             <span className="card-title">{survey.title}</span>
             <p>{survey.body}</p>
-            <p className="right">LastUpdate: {survey.lastResponded}</p>
+            <p className="right">LastUpdate: {survey.lastResponded }</p>
             <div className="card-action">
               <a>YES:  {survey.yes}</a>
               <a>YES:  {survey.no}</a>
