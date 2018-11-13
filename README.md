@@ -197,6 +197,8 @@ app.get("/auth/google/callback",
     res.redirect('/surveys')
   }
 );
+
+![alt-text](/images/cookie.png)
 ````
 
 ## How to connect Server and Client Side // Revisar
