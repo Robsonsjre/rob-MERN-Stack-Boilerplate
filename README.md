@@ -132,6 +132,18 @@ You have to install two differentes modules:
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
+//Use to not save in your session the Google/Facebbok Id, but your own database id
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser((id, done) => {
+  console.log("deserializeUser");
+  User.findById(id).then((user, err) => {
+    done(null, user);
+  });
+});
+
  passport.use(
   new GoogleStrategy(
     {
