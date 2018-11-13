@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
             <p className="right">LastUpdate: {survey.lastResponded }</p>
             <div className="card-action">
               <a>YES:  {survey.yes}</a>
-              <a>YES:  {survey.no}</a>
+              <a>NO:  {survey.no}</a>
             </div>
           </div>
         </div>

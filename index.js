@@ -7,6 +7,8 @@ const passport = require('passport')
 
 require('./models/User')
 require('./models/Survey')
+
+//require google OAUTH strategy
 require('./services/passport')
 
 mongoose.connect(keys.mongoURI)
