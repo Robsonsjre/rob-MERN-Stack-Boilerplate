@@ -157,12 +157,24 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
   )
 );
 
+app.use(passport.initialize())
+app.use(passport.session())
+
+//Click button will redirect to that route
 app.get(
     "/auth/google",
     passport.authenticate("google", {
       scope: ["profile", "email"]
     })
   );
+
+//callback to second auth
+app.get("/auth/google/callback",
+  passport.authenticate("google"),
+  (req, res) => {
+    res.redirect('/surveys')
+  }
+);
 ````
 
 ## How to connect Server and Client Side // Revisar
