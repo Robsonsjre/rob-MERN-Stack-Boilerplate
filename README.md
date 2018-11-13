@@ -2,7 +2,7 @@
 1. [Project stack](#project-stack)
 1. [Setup Server Side](#setup-server-side)
 1. [Setup Cookies](#setup-cookies)
-1. [OUATH Authentication](#oauth-authentication)
+1. [OAUTH Authentication](#oauth-authentication)
 1. [Initial Boilerplate for React-Redux-Router](#initial-boilerplate-for-react-redux-router)
 1. [Setup Client React Setup](#setup-client-react-setup)
 1. [Email Provider Setup](#email-provider-setup)
@@ -107,7 +107,7 @@ There are two main approachs for cookies: cookie-parse and not remember(revisar)
 - Should write walkthrough to Google's OAUTH
 - There is a good article talking about many security checkup (helmet, header, etc)
 
-## OUATH Authentication
+## OAUTH Authentication
 ======================
 
 Using Passaport.js
