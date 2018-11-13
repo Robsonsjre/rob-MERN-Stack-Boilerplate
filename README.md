@@ -111,8 +111,59 @@ There are two main approachs for cookies: cookie-parse and not remember(revisar)
 ======================
 
 Using Passaport.js
+You have to install two differentes modules: 
+ - Passaport `general functions handling`
+ - Passaport strategies `select specific service: Facebook / Google`
+ 
+ Starting installing passport and passaport Google strategy:
+ 
+ `npm install --save passport-google-ouath20`
+ 
+ 1) Go to console.developers.google.com
+ 2) Create and select your project
+ 3) Enable API `search for google+ API and them 'accessing user data with OAuth 2.0'`
+ 4) Fill some info into the consensus screen `get clientId and clientSecret`
+ 5) Create your credential
+ 
+ 
+ ```javascript
+ //index.js
+ 
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-Revisar e escrever como é o passo a passo, pelo menos do Google e Facebook
+ passport.use(
+  new GoogleStrategy(
+    {
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret, `just created into the step 3)
+      callbackURL: "/auth/google/callback", //you need to setup that in your route.js
+      proxy: true
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      const profileId = profile ? profile.id.toString() : false;
+      const profileName = profile ? profile.displayName : "user" + profileId;
+      if (profileId) {
+        //Check if user exists in our database
+        const existingUser = await User.findOne({ googleId: profileId });
+        if (existingUser) {
+          return done(null, existingUser);
+        }
+        //Create a new user
+        const user = await new User({ googleId: profileId, name: profileName}).save();
+        done(null, user);
+      }
+    }
+  )
+);
+
+app.get(
+    "/auth/google",
+    passport.authenticate("google", {
+      scope: ["profile", "email"]
+    })
+  );
+````
 
 ## How to connect Server and Client Side // Revisar
 ======================
