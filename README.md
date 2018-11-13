@@ -104,8 +104,17 @@ app.listen(PORT);
 
 There are two main approachs for cookies: cookie-parse and not remember(revisar)
 
-- Should write walkthrough to Google's OAUTH
+- `npm install --save cookie-session`
 - There is a good article talking about many security checkup (helmet, header, etc)
+
+````javascript
+
+app.use(
+  cookieSession({
+    maxAge: 30*24*60*60*1000, // 1 month in milliseconds
+    keys: [keys.cookieKey] //something random string generate by you
+  })
+)
 
 ## OAUTH Authentication
 ======================
@@ -170,6 +179,7 @@ passport.deserializeUser((id, done) => {
 );
 
 app.use(passport.initialize())
+//Tell passport to use cookie-session
 app.use(passport.session())
 
 //Click button will redirect to that route
