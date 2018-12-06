@@ -8,7 +8,7 @@ class Header extends Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
-        return;
+        return <p>Deu Ruim</p>;
       case false:
         return (
           <li>
@@ -33,7 +33,7 @@ class Header extends Component {
               to={"/"}
               className="left brand-logo"
             >
-              INSEAD
+              Rob Boilerplate
             </Link>
             <ul id="nav-mobile" className="right">
               {this.renderContent()}
