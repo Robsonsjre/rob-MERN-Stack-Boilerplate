@@ -29,9 +29,9 @@ to run the project:
 - Mongo `mlab`
 - React & Redux
 - Passport.js `for oauth athentication`
-- SendGrid 
+- SendGrid  `email handling`
 - Heroku
-- Stripe `handle payments`
+- Stripe `payments handling `
 
 
 ## Setup Server Side
@@ -197,6 +197,8 @@ app.get("/auth/google/callback",
     res.redirect('/surveys')
   }
 );
+
+![alt-text](/images/cookie.png)
 ````
 
 ## How to connect Server and Client Side // Revisar
