@@ -6,7 +6,7 @@
 1. [Initial Boilerplate for React-Redux-Router](#initial-boilerplate-for-react-redux-router)
 1. [Setup Client React Setup](#setup-client-react-setup)
 1. [Email Provider Setup](#email-provider-setup)
-1. [Deploy proccess](#deploy-proccess)
+1. [Deploy process](#deploy-process)
 
 
 ## Overview
@@ -343,7 +343,7 @@ Provider: SendGrid
 3) Put the Key into the config/dev/key.js file and create the env variable into prod/key, add it to the env variables on Heroku/AWS
 4) Install the npm module: sendgrid
 
-## Deploy process 
+## Deploy Process 
 
 ###  1) Heroku
 ###  2) Elastic Beanstalk
