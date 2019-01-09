@@ -352,6 +352,7 @@ Provider: SendGrid
    2) "prestart" on package.json to perform npm install in server and client
    
    `"prestart": "NPM_CONFIG_PRODUCTION=false npm install && npm install --prefix client && npm run build --prefix client"`
+   
    3) create .npmrc file to setup node permissions
    4) create .ebextensions folder and create there a config file to set node permissions too
    
