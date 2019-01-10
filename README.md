@@ -346,6 +346,15 @@ Provider: SendGrid
 ## Deploy Process 
 
 ###  1) Heroku
+  
+  1) Create app
+  2) "postbuild" on package.json to perform npm install in server and client
+  
+  `"heroku-postbuild: "NPM_CONFIG_PRODUCTION=false npm install && npm install --prefix client && npm run build --prefix client"`"
+  
+  3) setup envirment variables
+  4) `git push heroku master`
+
 ###  2) Elastic Beanstalk
 
    1) Create enviroment AWS / Choose same node version
