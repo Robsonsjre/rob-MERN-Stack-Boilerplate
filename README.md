@@ -380,7 +380,9 @@ Provider: SendGrid
    6) Zip folders and deploy to enviroment
   
 ###  3) EC2
-###  4) Use a CI/CD proccess
+###  4) Use a CI/CD proccess + EBS
+  - CircleCI - https://gist.github.com/ryansimms/808214137d219be649e010a07af44bad
+  
 ###  5) Docker Container
 ###  6) frontend on CloudFront + 
 
