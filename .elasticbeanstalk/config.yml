@@ -1,0 +1,19 @@
+branch-defaults:
+  master:
+    environment: production-project
+environment-defaults:
+  production-atacadapp:
+    branch: master
+    repository: null
+global:
+  application_name: project
+  default_ec2_keyname: null
+  default_platform: arn:aws:elasticbeanstalk:sa-east-1::platform/Node.js running on
+    64bit Amazon Linux/4.7.1
+  default_region: sa-east-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  sc: git
+  workspace_type: Application
