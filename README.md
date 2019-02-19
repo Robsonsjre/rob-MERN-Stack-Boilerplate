@@ -6,7 +6,7 @@
 1. [Initial Boilerplate for React-Redux-Router](#initial-boilerplate-for-react-redux-router)
 1. [Setup Client React Setup](#setup-client-react-setup)
 1. [Email Provider Setup](#email-provider-setup)
-1. [Deployment proccess](#deployment-proccess)
+1. [Deploy process](#deploy-process)
 
 
 ## Overview
@@ -343,12 +343,48 @@ Provider: SendGrid
 3) Put the Key into the config/dev/key.js file and create the env variable into prod/key, add it to the env variables on Heroku/AWS
 4) Install the npm module: sendgrid
 
-## Y) Deployment process 
+## Deploy Process 
 
-  1) Option 1: Build in your own machine and push do heroku
-  2) Option 2: Push to Heroku and make him install dependencies and do the build
-  3) Option 3: Use a CI/CD plataform and make the build process there
-  4) Option 4: Docker (?)
+###  1) Heroku
+  
+  1) Create app
+  2) "postbuild" on package.json to perform npm install in server and client
+  
+  `"heroku-postbuild: "NPM_CONFIG_PRODUCTION=false npm install && npm install --prefix client && npm run build --prefix client"`"
+  
+  3) setup envirment variables
+  4) `git push heroku master`
+
+###  2) Elastic Beanstalk
+
+   1) Create enviroment AWS / Choose same node version
+   2) "prestart" on package.json to perform npm install in server and client
+   
+   `"prestart": "NPM_CONFIG_PRODUCTION=false npm install && npm install --prefix client && npm run build --prefix client"`
+   
+   3) create .npmrc file to setup node permissions
+   4) create .ebextensions folder and create there a config file to set node permissions too
+   
+   ````
+   files:
+  "/opt/elasticbeanstalk/hooks/appdeploy/post/99_fix_node_permissions.sh":
+    mode: "000755"
+    owner: root
+    group: root
+    content: |
+      #!/usr/bin/env bash
+      chown -R nodejs:nodejs /tmp/.npm/
+
+   ````
+   5) Set `NODE_ENV` and `PORT` on enviroment variables
+   6) Zip folders and deploy to enviroment
+  
+###  3) EC2
+###  4) Use a CI/CD proccess + EBS
+  - CircleCI - https://gist.github.com/ryansimms/808214137d219be649e010a07af44bad
+  
+###  5) Docker Container
+###  6) frontend on CloudFront + 
 
 ## X) Important Tools
 
