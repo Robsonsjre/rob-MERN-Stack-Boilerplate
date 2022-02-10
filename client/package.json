@@ -7,7 +7,7 @@
     "connected-react-router": "^5.0.1",
     "http-proxy-middleware": "^0.19.1",
     "materialize-css": "^1.0.0",
-    "node-sass": "^4.10.0",
+    "node-sass": "^7.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
